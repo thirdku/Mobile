@@ -1,11 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import Body from '../Body/index.js';
-import Header from '../Header/index.js';
+import Body from '../../Body/index.js';
+import Header from '../../Header/index.js';
 
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,  } from 'react-native';
 export default function Home({navigation}) {
-  const[isDone ,setDone] = React.useState(false)
+  const [isDone ,setDone] = React.useState(false)
   return (
        <View style={styles.container}>
            <View style={styles.blank}></View>
