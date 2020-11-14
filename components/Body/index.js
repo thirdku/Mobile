@@ -39,8 +39,10 @@ export default function Body({ isDone }) {
             <Text style={styles.name1}>2/4</Text>
           </View>
         </View>
-
+        <View style={{ flex:0.9}} />
         <Timer isDone={isDone} />
+        <View style={{ flex:1}} />
+
         <View style={styles.blank1} />
 
         <View style={styles.name}>
@@ -63,8 +65,9 @@ export default function Body({ isDone }) {
           </View>
         </View>
 
+        <View style={{ flex:0.9}} />
         <Timer isDone={isDone} />
-
+        <View style={{ flex:1}} />
         <View style={styles.blank1} />
 
         <View style={styles.name}>
@@ -88,8 +91,9 @@ export default function Body({ isDone }) {
         </View>
 
     
+        <View style={{ flex:0.9}} />
         <Timer isDone={isDone} />
-
+        <View style={{ flex:1}} />
       </View>
     </View>
   );
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    backgroundColor: "green",
+    
   },
   coName: {
     alignSelf: "center",
@@ -109,7 +113,6 @@ const styles = StyleSheet.create({
   name: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "green",
     alignSelf: "stretch",
   },
   picTimer: {
@@ -117,7 +120,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "stretch",
     flexDirection: "row",
-    backgroundColor: "pink",
   },
   blank: {
     flex: 0.43,

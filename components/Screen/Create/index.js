@@ -10,15 +10,28 @@ import {
 export default function Create({ navigation }) {
   const [value, onChangeText] = React.useState("TEAM ID");
   return (
+    
     <View style={styles.container}>
       <View style={styles.blank}></View>
-      <Header style={styles.header} navigation={navigation} />
+      <View style={{flex:1}}/>
       <View style={styles.timer}>
-        <Text>
+      <View style={styles.date}>
+           <View style={styles.blank1}></View>
+           
+           <View style={styles.blank1}></View>
+
+           <Text style={{ alignSelf:'center', fontSize:30,}}>
           I am a
         </Text>
+           </View>
+        <View style={{flex:0.25}}/>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Join</Text>
+          <Text style={styles.buttonText}>Employee</Text>
+        </TouchableOpacity>
+        <View style={{flex:0.25}}/>
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Manager</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.name}></View>
@@ -33,8 +46,10 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },
-  blank: {
-    flex: 0.2,
+  blank:{
+    flex:0.25,
+    backgroundColor: 'black',
+    alignSelf:'stretch'
   },
   timer: {
     flex: 4,
@@ -55,7 +70,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    alignSelf: "stretch",
     height: 60,
     padding: 16,
     margin: 10,
@@ -63,10 +77,5 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 25,
   },
-  header: {
-    flex: 1,
-    alignItems: "center",
-    flexDirection: "row",
-    backgroundColor: "pink",
-  },
+  
 });

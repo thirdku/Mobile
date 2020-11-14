@@ -7,26 +7,27 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-export default function Join({ navigation }) {
+export default function Avatar({ navigation }) {
   const [value, onChangeText] = React.useState("TEAM ID");
   return (
     <View style={styles.container}>
       <View style={styles.blank}></View>
-      <View style={{flex:2}}/>
-
+      
       <View style={styles.timer}>
-        <Text style={{fontSize:25,alignSelf:'center'}}>My Invite Code is</Text>
+      <View style={{flex:1}}/>
+
+        <Text style={{alignSelf:'center',fontSize:25}}>
+          Upload an image for Avatar
+        </Text>
         <View style={{flex:0.25}}/>
 
-        <TextInput
-          style={styles.input}
-          placeholder="TEAM ID"
-          textAlign="center"
-        ></TextInput>
-              <View style={{flex:1}}/>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Upload</Text>
+        </TouchableOpacity>
+        <View style={{flex:1}}/>
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Join</Text>
+          <Text style={styles.buttonText}>Finish</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.name}></View>
@@ -65,7 +66,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    alignSelf: "stretch",
     height: 60,
     padding: 16,
     margin: 10,

@@ -4,7 +4,7 @@ export default function Timer({ isDone }) {
   const dataBlock = [{}]
   const image = {
     uri:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png",
+      "https://dt.azadicdn.com/wp-content/uploads/2015/07/screenshots-Oppo-phones.jpg?200",
   };
   const imageBlock =()=>{
     
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "stretch",
     flexDirection: "row",
-    backgroundColor: "pink",
+    
   },
   blank: {
     flex: 0.43,
@@ -95,8 +95,12 @@ const styles = StyleSheet.create({
     flex: 0.5,
   },
   pic: {
-    backgroundColor: "red",
     flex: 0.35,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth:1,
+    borderBottomWidth:1,
+    backgroundColor: '#DCDCDC'
   },
   image1: {
     flex: 1,
@@ -107,9 +111,8 @@ const styles = StyleSheet.create({
   imageContain: {
     flex: 1,
     alignSelf: "stretch",
-    backgroundColor: "blue",
   },
   blank4: {
-    flex: 0.025,
+    flex: 0.05,
   },
 });
