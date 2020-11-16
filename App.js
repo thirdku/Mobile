@@ -68,11 +68,10 @@ const Stack = createStackNavigator();
          component={Avatar}>
           
         </Stack.Screen>
-        <Stack.Screen
-         name="Home"
-         component={(props) =><Home isDone={true} usersData={usersData} mainUserActivity={mainUserActivity}  />}
-        >
-          
+        <Stack.Screen name="Home">
+         {props => <Home {...props} isDone={true} usersData={usersData} mainUserActivity={mainUserActivity}  />}
+        
+    
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

@@ -28,7 +28,7 @@ export default function Timer( props ) {
                 <Image style={styles.image1} source={image1}></Image>
               </TouchableOpacity>
             ) : isDone ? (
-              <TouchableOpacity onPress={()=>console.log(props)}>
+              <TouchableOpacity onPress={()=>console.log('dog',props)}>
                 <Text style={styles.child}>00:00:00</Text>
               </TouchableOpacity>
             ) :(
