@@ -3,8 +3,7 @@ import Body from '../../Body/index.js';
 import Header from '../../Header/index.js';
 
 import { StyleSheet, Text, View,  } from 'react-native';
-export default function Home({navigation}) {
-  const [isDone ,setDone] = React.useState(false)
+export default function Home({navigation, isDone , mainUserActivity , usersData}) {
   return (
        <View style={styles.container}>
            <View style={styles.blank}></View>
@@ -17,7 +16,7 @@ export default function Home({navigation}) {
              <Text> Today </Text>
            </View>
            <View style={styles.body}>
-                <Body isDone={isDone}/>
+                <Body isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity}/>
            </View>
        </View>
     
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
 
   },
   date:{
-      flex:0.5,
+      flex:0.8,
       alignSelf: 'center'
   },
   image :{

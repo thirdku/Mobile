@@ -2,7 +2,7 @@ import React from "react";
 import Timer from '../Timer/index.js';
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-export default function Body({ isDone }) {
+export default function Body({ navigation,isDone,usersData,mainUserActivity }) {
   const dataBlock = [{}]
   const image = {
     uri:
@@ -40,7 +40,7 @@ export default function Body({ isDone }) {
           </View>
         </View>
         <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} />
+        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
         <View style={{ flex:1}} />
 
         <View style={styles.blank1} />
@@ -66,7 +66,7 @@ export default function Body({ isDone }) {
         </View>
 
         <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} />
+        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
         <View style={{ flex:1}} />
         <View style={styles.blank1} />
 
@@ -92,7 +92,7 @@ export default function Body({ isDone }) {
 
     
         <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} />
+        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
         <View style={{ flex:1}} />
       </View>
     </View>

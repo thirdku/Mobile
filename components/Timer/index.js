@@ -1,13 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-export default function Timer({ isDone }) {
+export default function Timer( props ) {  
+  const isDone = true
   const dataBlock = [{}]
   const image = {
     uri:
       "https://dt.azadicdn.com/wp-content/uploads/2015/07/screenshots-Oppo-phones.jpg?200",
   };
-  const imageBlock =()=>{
-    
+  const image1 = {
+    uri:
+      "https://content.fortune.com/wp-content/uploads/2019/04/brb05.19.plus_.jpg",
+  };
+  const ImageBlock =()=>{
+     
     return dataBlock.map((data,item_id) =>{
     return (
  <View></View>
@@ -18,13 +23,17 @@ export default function Timer({ isDone }) {
           <View style={styles.blank4} />
 
           <View style={styles.pic}>
-            {!isDone ? (
-              <TouchableOpacity style={styles.imageContain}>
-                <Image style={styles.image1} source={image}></Image>
+            { !isDone ? (
+              <TouchableOpacity style={styles.imageContain} onPress={()=>console.log('dog',props)}>
+                <Image style={styles.image1} source={image1}></Image>
               </TouchableOpacity>
-            ) : (
-              <TouchableOpacity>
+            ) : isDone ? (
+              <TouchableOpacity onPress={()=>console.log(props)}>
                 <Text style={styles.child}>00:00:00</Text>
+              </TouchableOpacity>
+            ) :(
+              <TouchableOpacity style={styles.imageContain} onPress={()=>console.log(isDone)}>
+                <Image style={styles.image1} source={image1}></Image>
               </TouchableOpacity>
             )}
           </View>
