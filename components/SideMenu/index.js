@@ -5,23 +5,19 @@ import Create from "../Screen/Create/index.js";
 import Name from "../Screen/Name/index.js";
 import Avatar from "../Screen/Avatar/index.js";
 
-
-
 import { StyleSheet } from "react-native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function SideMenu() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Dashboard" component={Home} />
-      <Drawer.Screen name="Join" component={Join} />
-      <Drawer.Screen name="Create" component={Create} />
-      <Drawer.Screen name="Upgrade" component={Name} />
-      <Drawer.Screen name="Avatar" component={Avatar} />
-
-    </Drawer.Navigator>
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Join" component={Join} />
+      <Stack.Screen name="Create" component={Create} />
+      <Stack.Screen name="Upgrade" component={Name} />
+      <Stack.Screen name="Avatar" component={Avatar} />
+    </Stack.Navigator>
   );
 }
 

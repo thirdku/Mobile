@@ -1,20 +1,28 @@
-import React from "react";
-import Timer from '../Timer/index.js';
+import React, { useEffect } from "react";
+import Timer from "../Timer/index.js";
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-export default function Body({ navigation,isDone,usersData,mainUserActivity }) {
-  const dataBlock = [{}]
+export default function Body({
+  navigation,
+  setDone,
+  setMainUserActivity,
+  isDone,
+  usersData,
+  mainUserActivity,
+}) {
+  const dataBlock = [{}];
   const image = {
     uri:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Disk_pack1.svg/1200px-Disk_pack1.svg.png",
   };
-  const imageBlock =()=>{
-    
-    return dataBlock.map((data,item_id) =>{
-    return (
- <View></View>
-    )})
-  }
+  const imageBlock = () => {
+    return dataBlock.map((data, item_id) => {
+      return <View></View>;
+    });
+  };
+  useEffect(() => {
+    console.log("dog2", mainUserActivity.sessions);
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -39,9 +47,15 @@ export default function Body({ navigation,isDone,usersData,mainUserActivity }) {
             <Text style={styles.name1}>2/4</Text>
           </View>
         </View>
-        <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
-        <View style={{ flex:1}} />
+        <View style={{ flex: 0.9 }} />
+        <Timer
+          setDone={setDone}
+          setMainUserActivity={setMainUserActivity}
+          isDone={isDone}
+          usersData={usersData}
+          mainUserActivity={mainUserActivity}
+        />
+        <View style={{ flex: 1 }} />
 
         <View style={styles.blank1} />
 
@@ -65,9 +79,15 @@ export default function Body({ navigation,isDone,usersData,mainUserActivity }) {
           </View>
         </View>
 
-        <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
-        <View style={{ flex:1}} />
+        <View style={{ flex: 0.9 }} />
+        <Timer
+          setDone={setDone}
+          setMainUserActivity={setMainUserActivity}
+          isDone={isDone}
+          usersData={usersData}
+          mainUserActivity={mainUserActivity}
+        />
+        <View style={{ flex: 1 }} />
         <View style={styles.blank1} />
 
         <View style={styles.name}>
@@ -90,10 +110,15 @@ export default function Body({ navigation,isDone,usersData,mainUserActivity }) {
           </View>
         </View>
 
-    
-        <View style={{ flex:0.9}} />
-        <Timer isDone={isDone} usersData={usersData} mainUserActivity={mainUserActivity} />
-        <View style={{ flex:1}} />
+        <View style={{ flex: 0.9 }} />
+        <Timer
+          setDone={setDone}
+          setMainUserActivity={setMainUserActivity}
+          isDone={isDone}
+          usersData={usersData}
+          mainUserActivity={mainUserActivity}
+        />
+        <View style={{ flex: 1 }} />
       </View>
     </View>
   );
@@ -105,7 +130,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    
   },
   coName: {
     alignSelf: "center",
