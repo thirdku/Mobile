@@ -6,7 +6,10 @@ export default function Timer({
   mainUserActivity,
   setDone,
   setMainUserActivity,
+  onStartSession
 }) {
+  const [time, setTime] = React.useState(0);
+  const [isActive, setActive] = React.useState(false);
   const dataBlock = [{}];
   const countRef = useRef(null);
 
@@ -27,25 +30,29 @@ export default function Timer({
   const data = mainUserActivity.sessions;
 
   const handleStart = (index) => {
-    if (isDone == true) {
-      setDone(false);
+    if (isDone === false && isActive === false) {
+      const start = Date.now()
+      setTime(start)
+      setActive(true)
       countRef.current = setInterval(() => {
         const _mainUserActivity = { ...mainUserActivity };
-
-        _mainUserActivity.sessions[2].time =
-          _mainUserActivity.sessions[2].time - 1;
-
-        setMainUserActivity(_mainUserActivity);
-      }, 1000);
-    } else {
-      clearInterval(countRef.current);
-      setDone(true);
-    }
-  };
-
-  useEffect(() => {
-    console.log("dogd", mainUserActivity.sessions[3 - 1].time);
-  }, [handleStart]);
+        const minus = Date.now() - start;
+        _mainUserActivity.sessions[index].time =
+          _mainUserActivity.sessions[index].time - ((Math.floor(minus/1000)+1)-Math.floor(minus/1000));;
+        
+        
+          
+          setMainUserActivity(_mainUserActivity);
+        }, 1000);
+      } else if (isActive === true){
+        clearInterval(countRef.current);
+        setActive(false)
+      }
+    };
+  
+    useEffect(() => {
+    
+  }, []);
   return (
     <View style={styles.picTimer}>
       <View style={styles.blank4} />
@@ -61,14 +68,14 @@ export default function Timer({
         };
         return (
           <View style={styles.pic} key={index}>
-            {datas.status == "complete" ? (
+            {datas.time === 0 ? (
               <TouchableOpacity
                 style={styles.imageContain}
                 onPress={() => console.log(datas.time)}
               >
                 <Image style={styles.image1} source={image}></Image>
               </TouchableOpacity>
-            ) : datas.status == "progress" ? (
+            ) : datas.status === "progress" ? (
               <TouchableOpacity
                 style={styles.imageContain}
                 onPress={() => handleStart(index)}
@@ -78,7 +85,7 @@ export default function Timer({
             ) : (
               <TouchableOpacity
                 style={styles.imageContain}
-                onPress={() => handleStart(index)}
+                onPress={() => onStartSession(index)}
               >
                 <Image style={styles.image1} source={image1}></Image>
               </TouchableOpacity>

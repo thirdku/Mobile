@@ -22,6 +22,7 @@ export default function Home(props) {
           isDone={props.isDone}
           usersData={props.usersData}
           mainUserActivity={props.mainUserActivity}
+          onStartSession={props.onStartSession}
         />
       </View>
     </View>

@@ -9,6 +9,7 @@ export default function Body({
   isDone,
   usersData,
   mainUserActivity,
+  onStartSession
 }) {
   const dataBlock = [{}];
   const image = {
@@ -54,6 +55,7 @@ export default function Body({
           isDone={isDone}
           usersData={usersData}
           mainUserActivity={mainUserActivity}
+          onStartSession={onStartSession}
         />
         <View style={{ flex: 1 }} />
 
@@ -86,6 +88,7 @@ export default function Body({
           isDone={isDone}
           usersData={usersData}
           mainUserActivity={mainUserActivity}
+          onStartSession={onStartSession}
         />
         <View style={{ flex: 1 }} />
         <View style={styles.blank1} />
@@ -117,6 +120,7 @@ export default function Body({
           isDone={isDone}
           usersData={usersData}
           mainUserActivity={mainUserActivity}
+          onStartSession={onStartSession}
         />
         <View style={{ flex: 1 }} />
       </View>
