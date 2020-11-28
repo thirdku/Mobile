@@ -9,6 +9,7 @@ export default function Timer({
   onStartSession
 }) {
   const [time, setTime] = React.useState(0);
+  const [indexTime, setIndex] = React.useState(0);
   const [isActive, setActive] = React.useState(false);
   const dataBlock = [{}];
   const countRef = useRef(null);
@@ -28,11 +29,16 @@ export default function Timer({
   };
 
   const data = mainUserActivity.sessions;
-
+  const newTimer =(index) =>{
+    setIndex(index)
+  }
   const handleStart = (index) => {
-    if (isDone === false && isActive === false) {
+    if ( isActive === false) {
       const start = Date.now()
+      setIndex(index)
+      console.log(index)
       setTime(start)
+      setDone(false)
       setActive(true)
       countRef.current = setInterval(() => {
         const _mainUserActivity = { ...mainUserActivity };
@@ -51,8 +57,19 @@ export default function Timer({
     };
   
     useEffect(() => {
-    
-  }, []);
+      
+    if(mainUserActivity.sessions[indexTime].time === 7199) {
+      const _mainUserActivity = { ...mainUserActivity };
+      _mainUserActivity.sessions[indexTime].status = "complete"
+      setDone(true)
+      setActive(false)
+      const dex = indexTime;
+      const dog = dex + 1
+      setIndex(dog)
+      clearInterval(countRef.current);
+
+    }
+  }, [mainUserActivity]);
   return (
     <View style={styles.picTimer}>
       <View style={styles.blank4} />
@@ -67,11 +84,11 @@ export default function Timer({
           return `${getHours} : ${getMinutes} : ${getSeconds}`;
         };
         return (
-          <View style={styles.pic} key={index}>
-            {datas.time === 0 ? (
+          <View style={styles.pic} key={index} >
+            {datas.status === "complete" ? (
               <TouchableOpacity
                 style={styles.imageContain}
-                onPress={() => console.log(datas.time)}
+                onPress={() => console.log(index)}
               >
                 <Image style={styles.image1} source={image}></Image>
               </TouchableOpacity>
@@ -82,12 +99,19 @@ export default function Timer({
               >
                 <Text style={styles.child}>{formatTime()}</Text>
               </TouchableOpacity>
-            ) : (
+            ) : index === indexTime ?(
               <TouchableOpacity
                 style={styles.imageContain}
                 onPress={() => onStartSession(index)}
               >
                 <Image style={styles.image1} source={image1}></Image>
+              </TouchableOpacity>
+            ): (
+              <TouchableOpacity
+                style={styles.imageContain}
+                
+              >
+                <Image style={styles.image1} ></Image>
               </TouchableOpacity>
             )}
           </View>

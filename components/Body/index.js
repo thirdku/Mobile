@@ -21,9 +21,7 @@ export default function Body({
       return <View></View>;
     });
   };
-  useEffect(() => {
-    console.log("dog2", mainUserActivity.sessions);
-  }, []);
+ 
   return (
     <View style={styles.container}>
       <View style={styles.header}>

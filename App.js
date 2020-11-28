@@ -16,6 +16,18 @@ const App = () => {
         time: null,
         status: "incomplete",
       },
+      {
+        time: null,
+        status: "incomplete",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
       
     ],
   });
@@ -25,10 +37,11 @@ const App = () => {
     const set = { time:7200,status:"progress"}
     const _mainUserActivity = { ...mainUserActivity };
        
-        _mainUserActivity.sessions.unshift(set)
+        _mainUserActivity.sessions[index] = set
 
         setMainUserActivity(_mainUserActivity);
-        setDone(false)} else{}
+        setDone(false)} 
+        else{setDone(false)}
   };
   const modifySession = (sessionIndex, status) => {
     //modify main user activity
