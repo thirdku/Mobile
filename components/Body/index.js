@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import Timer from "../Timer/index.js";
+import TimerDisplay from "../TimerDisplay/index.js";
+
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 export default function Body({
@@ -9,8 +11,19 @@ export default function Body({
   isDone,
   usersData,
   mainUserActivity,
-  onStartSession
+  onStartSession,
+  other1UserActivity,
+  setOther1UserActivity,
+  otherUserActivity,
+  setOtherUserActivity,
+
 }) {
+  const name = mainUserActivity.name;
+  const name1 = otherUserActivity.name;
+  const name2 = other1UserActivity.name;
+
+
+
   const dataBlock = [{}];
   const image = {
     uri:
@@ -35,7 +48,7 @@ export default function Body({
           <View style={styles.blank1} />
           <View>
             <View style={styles.blank2} />
-            <Text style={styles.name1}>Me</Text>
+            <Text style={styles.name1}>{name}</Text>
           </View>
 
           <View style={styles.blank} />
@@ -67,7 +80,7 @@ export default function Body({
           <View style={styles.blank1} />
           <View>
             <View style={styles.blank2} />
-            <Text style={styles.name1}>Me</Text>
+            <Text style={styles.name1}>{name1}</Text>
           </View>
 
           <View style={styles.blank} />
@@ -80,12 +93,12 @@ export default function Body({
         </View>
 
         <View style={{ flex: 0.9 }} />
-        <Timer
+        <TimerDisplay
           setDone={setDone}
-          setMainUserActivity={setMainUserActivity}
+          setMainUserActivity={setOtherUserActivity}
           isDone={isDone}
           usersData={usersData}
-          mainUserActivity={mainUserActivity}
+          mainUserActivity={otherUserActivity}
           onStartSession={onStartSession}
         />
         <View style={{ flex: 1 }} />
@@ -99,7 +112,7 @@ export default function Body({
           <View style={styles.blank1} />
           <View>
             <View style={styles.blank2} />
-            <Text style={styles.name1}>Me</Text>
+            <Text style={styles.name1}>{name2}</Text>
           </View>
 
           <View style={styles.blank} />
@@ -112,12 +125,12 @@ export default function Body({
         </View>
 
         <View style={{ flex: 0.9 }} />
-        <Timer
+        <TimerDisplay
           setDone={setDone}
-          setMainUserActivity={setMainUserActivity}
+          setMainUserActivity={setOther1UserActivity}
           isDone={isDone}
           usersData={usersData}
-          mainUserActivity={mainUserActivity}
+          mainUserActivity={other1UserActivity}
           onStartSession={onStartSession}
         />
         <View style={{ flex: 1 }} />

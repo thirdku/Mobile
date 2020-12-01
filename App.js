@@ -11,7 +11,6 @@ const App = () => {
     name: "Max",
     lastSeen: "1 hour ago",
     sessions: [
-      
       {
         time: null,
         status: "incomplete",
@@ -28,20 +27,65 @@ const App = () => {
         time: null,
         status: "incomplete",
       },
-      
+    ],
+  });
+  const [otherUserActivity, setOtherUserActivity] = React.useState({
+    name: "Don",
+    lastSeen: "1 hour ago",
+    sessions: [
+      {
+        time: null,
+        status: "complete",
+      },
+      {
+        time: null,
+        status: "complete",
+      },
+      {
+        time: null,
+        status: "progress",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
+    ],
+  });
+  const [other1UserActivity, setOther1UserActivity] = React.useState({
+    name: "josuh",
+    lastSeen: "1 hour ago",
+    sessions: [
+      {
+        time: null,
+        status: "incomplete",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
+      {
+        time: null,
+        status: "incomplete",
+      },
     ],
   });
   const onStartSession = (index) => {
-    const start = Date.now()
-    if(isDone == true){
-    const set = { time:7200,status:"progress"}
-    const _mainUserActivity = { ...mainUserActivity };
-       
-        _mainUserActivity.sessions[index] = set
+    const start = Date.now();
+    if (isDone == true) {
+      const set = { time: 7200, status: "progress" };
+      const _mainUserActivity = { ...mainUserActivity };
 
-        setMainUserActivity(_mainUserActivity);
-        setDone(false)} 
-        else{setDone(false)}
+      _mainUserActivity.sessions[index] = set;
+
+      setMainUserActivity(_mainUserActivity);
+      setDone(false);
+    } else {
+      setDone(false);
+    }
   };
   const modifySession = (sessionIndex, status) => {
     //modify main user activity
@@ -57,6 +101,10 @@ const App = () => {
               {...props}
               setDone={setDone}
               setMainUserActivity={setMainUserActivity}
+              otherUserActivity={otherUserActivity}
+              setOtherUserActivity={setOtherUserActivity}
+              other1UserActivity={other1UserActivity}
+              setOther1UserActivity={setOther1UserActivity}
               isDone={isDone}
               usersData={usersData}
               mainUserActivity={mainUserActivity}

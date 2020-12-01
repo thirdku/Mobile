@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-export default function Timer({
+export default function TimerDisplay({
   isDone,
   usersData,
   mainUserActivity,
@@ -30,31 +30,7 @@ export default function Timer({
   };
 
   const data = mainUserActivity.sessions;
-  const newTimer = (index) => {
-    setIndex(index);
-  };
-  const handleStart = (index) => {
-    if (isActive === false) {
-      const start = Date.now();
-      setIndex(index);
-      console.log(index);
-      setTime(start);
-      setDone(false);
-      setActive(true);
-      countRef.current = setInterval(() => {
-        const _mainUserActivity = { ...mainUserActivity };
-        const minus = Date.now() - start;
-        _mainUserActivity.sessions[index].time =
-          _mainUserActivity.sessions[index].time -
-          (Math.floor(minus / 1000) + 1 - Math.floor(minus / 1000));
-
-        setMainUserActivity(_mainUserActivity);
-      }, 1000);
-    } else if (isActive === true) {
-      clearInterval(countRef.current);
-      setActive(false);
-    }
-  };
+  
 
   useEffect(() => {
     if (mainUserActivity.sessions[indexTime].time === 7199) {
@@ -86,25 +62,16 @@ export default function Timer({
             {datas.status === "complete" ? (
               <TouchableOpacity
                 style={styles.imageContain}
-                onPress={() => console.log(index)}
               >
                 <Image style={styles.image1} source={image}></Image>
               </TouchableOpacity>
             ) : datas.status === "progress" ? (
               <TouchableOpacity
                 style={styles.imageContain}
-                onPress={() => handleStart(index)}
               >
                 <Text style={styles.child}>{formatTime()}</Text>
               </TouchableOpacity>
-            ) : index === indexTime ? (
-              <TouchableOpacity
-                style={styles.imageContain}
-                onPress={() => onStartSession(index)}
-              >
-                <Image style={styles.image1} source={image1}></Image>
-              </TouchableOpacity>
-            ) : (
+            )  : (
               <TouchableOpacity style={styles.imageContain}>
                 <Image style={styles.image1}></Image>
               </TouchableOpacity>

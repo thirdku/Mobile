@@ -19,6 +19,10 @@ export default function Home(props) {
         <Body
           setDone={props.setDone}
           setMainUserActivity={props.setMainUserActivity}
+          otherUserActivity={props.otherUserActivity}
+          other1UserActivity={props.other1UserActivity}
+          setOtherUserActivity={props.setOtherUserActivity}
+          setOther1UserActivity={props.setOther1UserActivity}
           isDone={props.isDone}
           usersData={props.usersData}
           mainUserActivity={props.mainUserActivity}
