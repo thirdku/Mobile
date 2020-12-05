@@ -1,5 +1,15 @@
 import React, { useRef, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Modal,
+  TouchableHighlight,
+  Alert,
+} from "react-native";
+import ModalImage from "../ModalImage/index.js";
 export default function Timer({
   isDone,
   usersData,
@@ -7,11 +17,12 @@ export default function Timer({
   setDone,
   setMainUserActivity,
   onStartSession,
-  
 }) {
   const [time, setTime] = React.useState(0);
   const [indexTime, setIndex] = React.useState(0);
   const [isActive, setActive] = React.useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
+
   const dataBlock = [{}];
   const countRef = useRef(null);
 
@@ -24,9 +35,7 @@ export default function Timer({
       "https://content.fortune.com/wp-content/uploads/2019/04/brb05.19.plus_.jpg",
   };
   const ImageBlock = () => {
-    return dataBlock.map((data, item_id) => {
-      return <View></View>;
-    });
+    return <ModalImage></ModalImage>;
   };
 
   const data = mainUserActivity.sessions;
@@ -65,6 +74,7 @@ export default function Timer({
       const dex = indexTime;
       const dog = dex + 1;
       setIndex(dog);
+      setModalVisible(true);
       clearInterval(countRef.current);
     }
   }, [mainUserActivity]);
@@ -84,12 +94,17 @@ export default function Timer({
         return (
           <View style={styles.pic} key={index}>
             {datas.status === "complete" ? (
-              <TouchableOpacity
-                style={styles.imageContain}
-                onPress={() => console.log(index)}
-              >
-                <Image style={styles.image1} source={image}></Image>
-              </TouchableOpacity>
+              <View>
+                <Modal
+                  transparent={true}
+                  visible={modalVisible}
+                >
+                  <ModalImage
+                    modalVisible={modalVisible}
+                    setModalVisible={setModalVisible}
+                  ></ModalImage>
+                </Modal>
+              </View>
             ) : datas.status === "progress" ? (
               <TouchableOpacity
                 style={styles.imageContain}
@@ -105,7 +120,12 @@ export default function Timer({
                 <Image style={styles.image1} source={image1}></Image>
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity style={styles.imageContain}>
+              <TouchableOpacity
+                style={styles.imageContain}
+                onPress={() => {
+                  setModalVisible(true);
+                }}
+              >
                 <Image style={styles.image1}></Image>
               </TouchableOpacity>
             )}

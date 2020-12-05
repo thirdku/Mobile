@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Timer from "../Timer/index.js";
 import TimerDisplay from "../TimerDisplay/index.js";
-
+import ModalImage from "../ModalImage/index.js";
 
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 export default function Body({
@@ -60,6 +60,7 @@ export default function Body({
           </View>
         </View>
         <View style={{ flex: 0.9 }} />
+        
         <Timer
           setDone={setDone}
           setMainUserActivity={setMainUserActivity}
