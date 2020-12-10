@@ -16,13 +16,10 @@ export default function Body({
   setOther1UserActivity,
   otherUserActivity,
   setOtherUserActivity,
-
 }) {
   const name = mainUserActivity.name;
   const name1 = otherUserActivity.name;
   const name2 = other1UserActivity.name;
-
-
 
   const dataBlock = [{}];
   const image = {
@@ -34,7 +31,7 @@ export default function Body({
       return <View></View>;
     });
   };
- 
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -59,8 +56,8 @@ export default function Body({
             <Text style={styles.name1}>2/4</Text>
           </View>
         </View>
-        <View style={{ flex: 0.9 }} />
-        
+        <View style={{ flex: 1 }} />
+
         <Timer
           setDone={setDone}
           setMainUserActivity={setMainUserActivity}
@@ -69,7 +66,7 @@ export default function Body({
           mainUserActivity={mainUserActivity}
           onStartSession={onStartSession}
         />
-        <View style={{ flex: 1 }} />
+        <View style={{ flex: 0.6 }} />
 
         <View style={styles.blank1} />
 
@@ -93,7 +90,7 @@ export default function Body({
           </View>
         </View>
 
-        <View style={{ flex: 0.9 }} />
+        <View style={{ flex: 1 }} />
         <TimerDisplay
           setDone={setDone}
           setMainUserActivity={setOtherUserActivity}
@@ -102,7 +99,39 @@ export default function Body({
           mainUserActivity={otherUserActivity}
           onStartSession={onStartSession}
         />
+        <View style={{ flex: 0.6 }} />
+        <View style={styles.blank1} />
+
+        <View style={styles.name}>
+          <View style={styles.blank1} />
+
+          <Image style={styles.image} source={image}></Image>
+
+          <View style={styles.blank1} />
+          <View>
+            <View style={styles.blank2} />
+            <Text style={styles.name1}>{name2}</Text>
+          </View>
+
+          <View style={styles.blank} />
+          <View style={styles.blank} />
+
+          <View>
+            <View style={styles.blank2} />
+            <Text style={styles.name1}>2/4</Text>
+          </View>
+        </View>
+
         <View style={{ flex: 1 }} />
+        <TimerDisplay
+          setDone={setDone}
+          setMainUserActivity={setOther1UserActivity}
+          isDone={isDone}
+          usersData={usersData}
+          mainUserActivity={other1UserActivity}
+          onStartSession={onStartSession}
+        />
+        <View style={{ flex: 0.6 }} />
         <View style={styles.blank1} />
 
         <View style={styles.name}>
@@ -134,7 +163,7 @@ export default function Body({
           mainUserActivity={other1UserActivity}
           onStartSession={onStartSession}
         />
-        <View style={{ flex: 1 }} />
+        <View style={{ flex: 0.5 }} />
       </View>
     </View>
   );

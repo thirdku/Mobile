@@ -1,5 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from "react-native";
 export default function TimerDisplay({
   isDone,
   usersData,
@@ -7,11 +14,12 @@ export default function TimerDisplay({
   setDone,
   setMainUserActivity,
   onStartSession,
-  
 }) {
   const [time, setTime] = React.useState(0);
   const [indexTime, setIndex] = React.useState(0);
   const [isActive, setActive] = React.useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
+
   const dataBlock = [{}];
   const countRef = useRef(null);
 
@@ -30,7 +38,6 @@ export default function TimerDisplay({
   };
 
   const data = mainUserActivity.sessions;
-  
 
   useEffect(() => {
     if (mainUserActivity.sessions[indexTime].time === 7199) {
@@ -60,18 +67,31 @@ export default function TimerDisplay({
         return (
           <View style={styles.pic} key={index}>
             {datas.status === "complete" ? (
-              <TouchableOpacity
-                style={styles.imageContain}
-              >
-                <Image style={styles.image1} source={image}></Image>
-              </TouchableOpacity>
+              <View style={styles.imageContain}>
+                <TouchableOpacity
+                  style={styles.imageContain}
+                  onPress={() => {
+                    setModalVisible(true);
+                  }}
+                >
+                  <Image style={styles.image1} source={image}></Image>
+                </TouchableOpacity>
+                <Modal transparent={true} visible={modalVisible}>
+                  <TouchableOpacity
+                    style={styles.imageContain}
+                    onPress={() => {
+                      setModalVisible(false);
+                    }}
+                  >
+                    <Image style={styles.image1} source={image}></Image>
+                  </TouchableOpacity>
+                </Modal>
+              </View>
             ) : datas.status === "progress" ? (
-              <TouchableOpacity
-                style={styles.imageContain}
-              >
+              <TouchableOpacity style={styles.imageContain}>
                 <Text style={styles.child}>{formatTime()}</Text>
               </TouchableOpacity>
-            )  : (
+            ) : (
               <TouchableOpacity style={styles.imageContain}>
                 <Image style={styles.image1}></Image>
               </TouchableOpacity>

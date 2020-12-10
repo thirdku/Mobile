@@ -95,10 +95,7 @@ export default function Timer({
           <View style={styles.pic} key={index}>
             {datas.status === "complete" ? (
               <View>
-                <Modal
-                  transparent={true}
-                  visible={modalVisible}
-                >
+                <Modal transparent={true} visible={modalVisible}>
                   <ModalImage
                     modalVisible={modalVisible}
                     setModalVisible={setModalVisible}
